@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	// Add rows to the attendee list
+	// ToDo -  get this workng, add remove
+	// see http://jsfiddle.net/samliew/3AJcj/2/
+
+	$("#addAttendee").click(function() {
+		//$("#attendees tbody > tr:last").after(' <tr> <td><input type="text" name="firstName"></td> <td><input type="text" name="lastName"></td> <td><input type="text" name="age"></td> <td><input type="text" name="gender"></td> <td><input type="text" name="e-mail"></td> <td><input type="text" name="phone"></td> </tr> ');
+		$(' <tr> <td><input type="text" name="firstName"></td> <td><input type="text" name="lastName"></td> <td><input type="text" name="age"></td> <td><input type="text" name="gender"></td> <td><input type="text" name="e-mail"></td> <td><input type="text" name="phone"></td> </tr> ').hide().appendTo("#attendees tbody").fadeIn("slow");
+		//$("#attendees tbody > tr:last").attr({
+		//	"style" : "background-color : blue"
+	});
+	$("#removeAttendee").click(function() {
+		if ($("#attendees tbody tr").length > 1) {
+			$("#attendees tbody > tr:last").fadeOut("slow", function(){
+				$("#attendees tbody > tr:last").remove();
+			});
+		}
+	});
+});
+</script>
+<title>WYC Registration</title>
+</head>
+<body>
+<!-- TODO:
+	automatically populate year
+	Fill in conference title
+-->
+<h1>Wisconsin Youth Christ Registration</h1> 
+<p>Please fill out the form below to register for <abbr title"Wisconsin Yourth Christ">WYC</abbr>.</p>
+
+<!-- TODO - add action= for handler page-->
+<button id="addAttendee">Add Row</button>
+<button id="removeAttendee">Remove Row</button>
+<br/>
+<form method="post">
+	<!--a id="addAttendee">+</a><br/-->
+	<table id="attendees">
+		<thead>
+			<tr>
+				<td>First Name</td>
+				<td>Last Name</td>
+				<td>Age</td>
+				<td>Gender</td>
+				<td>E-Mail</td>
+				<td>Phone</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="text" name="firstName"></td>
+				<td><input type="text" name="lastName"></td>
+				<td><input type="text" name="age"></td>
+				<td><input type="text" name="gender"></td>
+				<td><input type="text" name="e-mail"></td>
+				<td><input type="text" name="phone"></td>
+			</tr>
+		</tbody>
+	</table>
+</form>
+
+</body>
+</html>
