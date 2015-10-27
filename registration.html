@@ -3,18 +3,31 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
 </script>
+<script type="text/template" id="attendeeRowTemplate">
+	<tr>
+		<td><input type="text" name="firstName[]"></td>
+		<td><input type="text" name="lastName[]"></td>
+		<td><input type="text" name="age[]"></td>
+		<td><input type="text" name="gender[]"></td>
+		<td><input type="text" name="e-mail[]"></td>
+		<td><input type="text" name="phone[]"></td>
+	</tr>
+</script>
 <script>
+function addAttendeeRow() {
+	// [] should make these inputs arrays in PHP
+	// http://stackoverflow.com/questions/6631786/forms-with-a-variable-number-of-fields
+	var template = $("#attendeeRowTemplate").html();
+	$(template).hide().appendTo("#attendees tbody").fadeIn("slow");
+}
+
 $(document).ready(function(){
 	// Add rows to the attendee list
 	// ToDo -  get this workng, add remove
 	// see http://jsfiddle.net/samliew/3AJcj/2/
 
-	$("#addAttendee").click(function() {
-		//$("#attendees tbody > tr:last").after(' <tr> <td><input type="text" name="firstName"></td> <td><input type="text" name="lastName"></td> <td><input type="text" name="age"></td> <td><input type="text" name="gender"></td> <td><input type="text" name="e-mail"></td> <td><input type="text" name="phone"></td> </tr> ');
-		$(' <tr> <td><input type="text" name="firstName"></td> <td><input type="text" name="lastName"></td> <td><input type="text" name="age"></td> <td><input type="text" name="gender"></td> <td><input type="text" name="e-mail"></td> <td><input type="text" name="phone"></td> </tr> ').hide().appendTo("#attendees tbody").fadeIn("slow");
-		//$("#attendees tbody > tr:last").attr({
-		//	"style" : "background-color : blue"
-	});
+	$("#addAttendee").click( addAttendeeRow );
+
 	$("#removeAttendee").click(function() {
 		if ($("#attendees tbody tr").length > 1) {
 			$("#attendees tbody > tr:last").fadeOut("slow", function(){
@@ -22,6 +35,10 @@ $(document).ready(function(){
 			});
 		}
 	});
+
+	// Add the first row. We do this here instead of in the HTML to make
+	// keeping the HTML consistent more easy.
+	addAttendeeRow();
 });
 </script>
 <title>WYC Registration</title>
@@ -52,14 +69,16 @@ $(document).ready(function(){
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
+		  <!-- The actual row is added by jQuery so the HTML can be kept
+				consistent more easily. -->
+			<!--tr>
 				<td><input type="text" name="firstName"></td>
 				<td><input type="text" name="lastName"></td>
 				<td><input type="text" name="age"></td>
 				<td><input type="text" name="gender"></td>
 				<td><input type="text" name="e-mail"></td>
 				<td><input type="text" name="phone"></td>
-			</tr>
+			</tr-->
 		</tbody>
 	</table>
 </form>
