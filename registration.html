@@ -34,12 +34,6 @@ function addAttendeeRow() {
 }
 
 $(document).ready(function(){
-	// Add rows to the attendee list
-	// ToDo -  get this workng, add remove
-	// see http://jsfiddle.net/samliew/3AJcj/2/
-
-	$("#addAttendee").click( addAttendeeRow );
-
 	/*
 	$("#removeAttendee").click(function() {
 		if ($("#attendees tbody tr").length > 1) {
@@ -52,26 +46,31 @@ $(document).ready(function(){
 
 	// Remove a specific row and update the count display
 	$("#attendees").on("click", ".removeThisAttendee", function(){
-		// I'd like to add a fadeout animation, but when I make remove a
-		// callback it ends up deleting everything.
-		// https://coderwall.com/p/tx5bhw/saving-jquery-references
-		// I probably need unique identifiers instead of a class
-		$(this).closest("tr").remove();
+		var deleteRow = $(this).closest("tr");
 
-		updateAttendeeCount();
+		deleteRow.fadeOut("fast", function(){
+			deleteRow.remove();
+			updateAttendeeCount();
+		});
+
 	});
 
 	// Add the first row. We do this here instead of in the HTML to make
 	// keeping the HTML consistent more easy.
 	addAttendeeRow();
 	// delete the Remove button for this first row.
-	$("#attendees tbody tr:last td:last").text(" "); 
+	$("#attendees tbody tr:last td:last").html(' <button type="button" id="addAttendee">Add Row</button> '); 
+
+	// Add rows to the attendee list
+	// NOTE: This has to happen after we initialize the Add Button (could probably be done better).
+	$("#addAttendee").click( addAttendeeRow );
 });
 </script>
 <title>WYC Registration</title>
 </head>
 <body>
 <!-- TODO:
+	make Add Row button a template for readability
 	automatically populate year
 	Fill in conference title
 -->
@@ -107,7 +106,6 @@ $(document).ready(function(){
 			</tr-->
 		</tbody>
 	</table>
-	<button type="button" id="addAttendee">Add Row</button>
 </form>
 
 </body>
