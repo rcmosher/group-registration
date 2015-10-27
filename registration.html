@@ -11,15 +11,26 @@
 		<td><input type="text" name="gender[]"></td>
 		<td><input type="text" name="e-mail[]"></td>
 		<td><input type="text" name="phone[]"></td>
-		<td><button class="removeThisAttendee">Remove</button></tr>
+		<td><button type="button" class="removeThisAttendee">Remove</button></tr>
 	</tr>
 </script>
 <script>
+// Display the number of attendees based on how many rows the user has
+// Removed or added
+function updateAttendeeCount() {
+	var count = $("#attendees tbody tr").length;
+
+	$("#count").text("Attendees: " + count);
+}
+
+// Add a row to the attendees and update the count
 function addAttendeeRow() {
-	// [] should make these inputs arrays in PHP
+	// brackets[] should make these inputs arrays in PHP
 	// http://stackoverflow.com/questions/6631786/forms-with-a-variable-number-of-fields
 	var template = $("#attendeeRowTemplate").html();
 	$(template).hide().appendTo("#attendees tbody").fadeIn("slow");
+	
+	updateAttendeeCount();
 }
 
 $(document).ready(function(){
@@ -39,16 +50,16 @@ $(document).ready(function(){
 	});
 	*/
 
+	// Remove a specific row and update the count display
 	$("#attendees").on("click", ".removeThisAttendee", function(){
 		// I'd like to add a fadeout animation, but when I make remove a
 		// callback it ends up deleting everything.
 		// https://coderwall.com/p/tx5bhw/saving-jquery-references
 		// I probably need unique identifiers instead of a class
 		$(this).closest("tr").remove();
+
+		updateAttendeeCount();
 	});
-	//$(".removeThisAttendee").click(function() {
-		//$(this).closest("tr").remove();
-	//});
 
 	// Add the first row. We do this here instead of in the HTML to make
 	// keeping the HTML consistent more easy.
@@ -68,11 +79,9 @@ $(document).ready(function(){
 <p>Please fill out the form below to register for <abbr title"Wisconsin Yourth Christ">WYC</abbr>.</p>
 
 <!-- TODO - add action= for handler page-->
-<button id="addAttendee">Add Row</button>
-<button id="removeAttendee">Remove Row</button>
 <br/>
 <form method="post">
-	<!--a id="addAttendee">+</a><br/-->
+	<p id="count">Attendees: </p>
 	<table id="attendees">
 		<thead>
 			<tr>
@@ -98,6 +107,7 @@ $(document).ready(function(){
 			</tr-->
 		</tbody>
 	</table>
+	<button type="button" id="addAttendee">Add Row</button>
 </form>
 
 </body>
