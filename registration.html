@@ -11,6 +11,7 @@
 		<td><input type="text" name="gender[]"></td>
 		<td><input type="text" name="e-mail[]"></td>
 		<td><input type="text" name="phone[]"></td>
+		<td><button class="removeThisAttendee">Remove</button></tr>
 	</tr>
 </script>
 <script>
@@ -28,6 +29,7 @@ $(document).ready(function(){
 
 	$("#addAttendee").click( addAttendeeRow );
 
+	/*
 	$("#removeAttendee").click(function() {
 		if ($("#attendees tbody tr").length > 1) {
 			$("#attendees tbody > tr:last").fadeOut("slow", function(){
@@ -35,10 +37,24 @@ $(document).ready(function(){
 			});
 		}
 	});
+	*/
+
+	$("#attendees").on("click", ".removeThisAttendee", function(){
+		// I'd like to add a fadeout animation, but when I make remove a
+		// callback it ends up deleting everything.
+		// https://coderwall.com/p/tx5bhw/saving-jquery-references
+		// I probably need unique identifiers instead of a class
+		$(this).closest("tr").remove();
+	});
+	//$(".removeThisAttendee").click(function() {
+		//$(this).closest("tr").remove();
+	//});
 
 	// Add the first row. We do this here instead of in the HTML to make
 	// keeping the HTML consistent more easy.
 	addAttendeeRow();
+	// delete the Remove button for this first row.
+	$("#attendees tbody tr:last td:last").text(" "); 
 });
 </script>
 <title>WYC Registration</title>
@@ -66,6 +82,7 @@ $(document).ready(function(){
 				<td>Gender</td>
 				<td>E-Mail</td>
 				<td>Phone</td>
+				<td> <!-- delete button --> </td>
 			</tr>
 		</thead>
 		<tbody>
