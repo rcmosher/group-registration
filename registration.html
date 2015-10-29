@@ -7,8 +7,14 @@
 	<tr>
 		<td><input type="text" name="firstName[]"></td>
 		<td><input type="text" name="lastName[]"></td>
-		<td><input type="text" name="age[]"></td>
-		<td><input type="text" name="gender[]"></td>
+		<td><input type="text" name="age[]" size="3"></td>
+		<td>
+			<select name="gender[]">
+				<option value=""></option>
+				<option value="F">F</option>
+				<option value="M">M</option>
+			</select>	
+		</td>
 		<td><input type="text" name="e-mail[]"></td>
 		<td><input type="text" name="phone[]"></td>
 		<td><button type="button" class="removeThisAttendee">Remove</button></tr>
@@ -79,7 +85,7 @@ $(document).ready(function(){
 
 <!-- TODO - add action= for handler page-->
 <br/>
-<form method="post">
+<form method="post" action="submit.php">
 	<p id="count">Attendees: </p>
 	<table id="attendees">
 		<thead>
@@ -106,6 +112,47 @@ $(document).ready(function(){
 			</tr-->
 		</tbody>
 	</table>
+	<p>
+		What nights do you need housing?
+		<br/>
+		Friday: <input type="checkbox" name="fridayHousing" checked>
+		<br/>
+		Saturday: <input type="checkbox" name="saturdayHousing" checked>
+	</p>
+	<p>
+		Would you like to stay in a cabin? (Families and married couples only. Availability is limited)
+		<br/>
+		<input type="radio" name="cabin" value="yes"> Yes
+		<input type="radio" name="cabin" value="no" checked> No
+	</p>
+	<p>
+		What meals will you be eating?
+		<br/>
+		Saturday Breakfast: <input type="checkbox" name="saturdayBreakfast" checked>
+		<br/>
+		Saturday Lunch: <input type="checkbox" name="saturdayLunch" checked>
+		<br/>
+		Saturday Dinner: <input type="checkbox" name="saturdayDinner" checked>
+		<br/>
+		Sunday Breakfast: <input type="checkbox" name="sundayBreakfast" checked>
+	</p>
+	<p>
+		What is your home church?
+		<br/>
+		<input type="text" name="church">
+	</p>
+	<p>
+		How did you hear about WYC?
+		<br/>
+		<select name="heardAbout">
+			<option value=""></option>
+			<option value="church">Church</option>
+			<option value="friend">Friend</option>
+			<option value="email">Email</option>
+			<option value="other">Other</option>
+		</select>	
+	</p>
+	<input type="submit" value="Register"> 
 </form>
 
 </body>
