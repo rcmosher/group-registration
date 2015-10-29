@@ -20,6 +20,37 @@
 		<td><button type="button" class="removeThisAttendee">Remove</button></tr>
 	</tr>
 </script>
+<!-- ERROR TEMPLATES -->
+<script type="text/template" id="missingFirstName">
+First name is required for all attendees.
+</script>
+<script type="text/template" id="missingLastName">
+Last name is required for all attendees.
+</script>
+<script type="text/template" id="missingLastName">
+Last name is required for all attendees.
+</script>
+<script type="text/template" id="missingAge">
+Age is required for all attendees.
+</script>
+<script type="text/template" id="invalidAge">
+Age must be a positive number.
+</script>
+<script type="text/template" id="missingGender">
+Gender is required for all attendees.
+</script>
+<script type="text/template" id="missingEmail">
+An e-mail is required for at least one attendee. We recommend adding it for at least the person who will be coordinating the group.
+</script>
+<script type="text/template" id="invalidEmail">
+E-mail addresses must be valid.
+</script>
+<script type="text/template" id="missingPhone">
+A phone number is required for at least one attendee. We recommend adding it for at least the person who will be coordinating the group.
+</script>
+<script type="text/template" id="invalidPhone">
+Phone numbers must be a number, and in the format 555-5555 or 555-555-5555
+</script>
 <script>
 // Display the number of attendees based on how many rows the user has
 // Removed or added
@@ -76,6 +107,13 @@ $(document).ready(function(){
 </head>
 <body>
 <!-- TODO:
+	Error checking (table is the only thing that needs it)
+		http://jqueryvalidation.org/ looks good. can it handle tables?
+		http://jqueryvalidation.org/require_from_group-method		
+		The above suggests it might be flexible enough
+	Calculate cost totals
+	Notify of additional forms (medical release)
+	Notify of chaperone needs
 	make Add Row button a template for readability
 	automatically populate year
 	Fill in conference title
