@@ -1,0 +1,23 @@
+Format this as markdown.
+[x] Find a MySQL GUI that works. http://stackoverflow.com/questions/1403787/can-you-recommend-a-free-light-weight-mysql-gui-for-linux
+[x] Create SQL categories. http://codereview.stackexchange.com/questions/13299/data-structure-for-categories-and-subcategories
+[ ] Submit to database
+	[ ] How should I reference categories in PHP/submission form? By number? Probably (gross).
+	[ ] Create PHP submission page
+	[ ] Get form input array into PHP array? http://stackoverflow.com/questions/3314567/how-to-get-form-input-array-into-php-array
+	[ ] Sanitize php user input. http://stackoverflow.com/questions/129677/whats-the-best-method-for-sanitizing-user-input-with-php#
+[ ] Error checking
+	[ ] Accessing table row and column number in jQuery (why did I want to do this? http://stackoverflow.com/questions/788225/table-row-and-column-number-in-jquery
+	[ ] Display errors
+[ ] Make it look nice 
+	[ ] Better animate the table. http://stackoverflow.com/questions/6600021/jquery-slide-up-table-row
+	[ ] CSS
+[ ] Reports
+	[ ] Full list
+	[ ] Summaries
+	[ ] Access groups
+[ ] Actions
+	[ ] Email attendees
+[ ] Git stuff
+	[ ] Learn how to easily add files to git. http://stackoverflow.com/questions/572549/difference-between-git-add-a-and-git-add
+	[ ] Stop git asking for username. http://stackoverflow.com/questions/11403407/git-asks-for-username-everytime-i-push

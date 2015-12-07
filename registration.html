@@ -70,6 +70,18 @@ function addAttendeeRow() {
 	updateAttendeeCount();
 }
 
+// Hide and show Other field based on selection
+function selectHeardAbout() {
+	if ($("#heardAbout").val() == "other")
+	{
+		$("#heardAboutOther").fadeIn();
+	}
+	else
+	{
+		$("#heardAboutOther").fadeOut();
+	}
+}
+
 $(document).ready(function(){
 	/*
 	$("#removeAttendee").click(function() {
@@ -101,6 +113,10 @@ $(document).ready(function(){
 	// Add rows to the attendee list
 	// NOTE: This has to happen after we initialize the Add Button (could probably be done better).
 	$("#addAttendee").click( addAttendeeRow );
+
+	selectHeardAbout();
+
+	$("#heardAbout").on("change", selectHeardAbout );
 });
 </script>
 <title>WYC Registration</title>
@@ -158,7 +174,7 @@ $(document).ready(function(){
 		Saturday: <input type="checkbox" name="saturdayHousing" checked>
 	</p>
 	<p>
-		Would you like to stay in a cabin? (Families and married couples only. Availability is limited)
+		Would you like to stay in a cabin? (Families and married couples only. Houses up to six people. Availability is limited)
 		<br/>
 		<input type="radio" name="cabin" value="yes"> Yes
 		<input type="radio" name="cabin" value="no" checked> No
@@ -182,13 +198,17 @@ $(document).ready(function(){
 	<p>
 		How did you hear about WYC?
 		<br/>
-		<select name="heardAbout">
+		<select name="heardAbout" id="heardAbout">
 			<option value=""></option>
 			<option value="church">Church</option>
 			<option value="friend">Friend</option>
+			<option value="campMeeting">Camp Meeting</option>
 			<option value="email">Email</option>
+			<option value="facebook">Facebook</option>
+			<option value="twitter">Twitter</option>
 			<option value="other">Other</option>
 		</select>	
+		<input type="text" name="heardAboutOther" id="heardAboutOther">
 	</p>
 	<input type="submit" value="Register"> 
 </form>
