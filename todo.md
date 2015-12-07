@@ -1,4 +1,4 @@
-- [ ]Format this as markdown.
+- [ ] Format this as markdown.
 - [x] Find a MySQL GUI that works. http://stackoverflow.com/questions/1403787/can-you-recommend-a-free-light-weight-mysql-gui-for-linux
 - [x] Create SQL categories. http://codereview.stackexchange.com/questions/13299/data-structure-for-categories-and-subcategories
 - [ ] Submit to database
